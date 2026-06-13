@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Users | Liver Health System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin/adm_users.css') }}">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="nav-logo">
+            <h2>Admin Panel</h2>
+        </div>
+        <nav>
+            <a href="/admin_home">Dashboard</a>
+            <a href="/adm_users" class="active">Users</a>
+            <a href="/adm_feed">Feedback</a>
+            <a href="/chng_pswrd">Password</a>
+            <a href="/" class="logout-btn">Logout</a>
+        </nav>
+    </header>
+
+    <main class="content">
+        <div class="content-box">
+            <h1>Manage Users</h1>
+            <p class="desc">
+                View registered users and manage their access to the system.
+            </p>
+
+            <table class="users-table">
+                <thead>
+                    <tr>
+                        <th>Sl</th>
+                        <th>Name</th>
+                        <th>DOB</th>
+                        <th>Email</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ user.name }}</td>
+                        <td>{{ user.dob }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>
+                            <span class="status {{ user.status }}">{{ user.status }}</span>
+                        </td>
+                        <td>
+                           {% if user.status == 'active' %}
+                                <a href="/admin/deactivate_user/{{ user.login_id }}" class="btn delete">
+                                    Deactivate
+                                </a>
+                            {% else %}
+                                <a href="/admin/activate_user/{{ user.login_id }}" class="btn block">
+                                    Activate
+                                </a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+</body>
+</html>

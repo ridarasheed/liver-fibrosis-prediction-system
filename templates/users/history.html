@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ username }}'s Prediction History</title>
+
+    <!-- History Page CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/users/history.css') }}">
+</head>
+
+<body>
+
+<h2>Your Prediction History </h2>
+
+{% if history %}
+<table>
+    <thead>
+        <tr>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Total Billirubin</th>
+            <th>Direct Billirubin</th>
+            <th>Total Proteins</th>
+            <th>ALT</th>
+            <th>AST</th>
+            <th>Albumin</th>
+            <th>Albumin / Globulin Ratio</th>
+            <th>Prediction Result</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for record in history %}
+        <tr>
+            <td>{{ record.age }}</td>
+            <td>{{ 'Male' if record.gender == 1 else 'Female'}}</td>
+            <td>{{ record.total_billirubin }}</td>
+            <td>{{ record.direct_billirubin }}</td>
+            <td>{{ record.total_proteins }}</td>
+            <td>{{ record.alt }}</td>
+            <td>{{ record.ast }}</td>
+            <td>{{ record.albumin }}</td>
+            <td>{{ record.albumin_globulin }}</td>
+            <td>{{ record.result }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% else %}
+<p>No prediction history available yet.</p>
+{% endif %}
+
+<p style="text-align:center;">
+    <a href="{{ url_for('prediction') }}">Back to Predict</a>
+    <a href="{{ url_for('home') }}">Back to Home</a>
+</p>
+
+</body>
+</html>

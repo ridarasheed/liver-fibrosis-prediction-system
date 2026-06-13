@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Feedback | Liver Health System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin/adm_feed.css') }}">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="nav-logo">
+            <h2>Admin Panel</h2>
+        </div>
+        <nav>
+            <a href="/admin_home">Dashboard</a>
+            <a href="/adm_users">Users</a>
+            <a href="/adm_feed" class="active">Feedback</a>
+            <a href="/chng_pswrd">Password</a>
+            <a href="/" class="logout-btn">Logout</a>
+        </nav>
+    </header>
+
+    <main class="content">
+        <div class="content-box">
+            <h1>User Feedback</h1>
+            <p class="desc">
+                View feedback received from users and reply directly.
+            </p>
+
+            <table class="feedback-table">
+                <thead>
+                    <tr>
+                        <th>Sl</th>
+                        <th>User</th>
+                        <th>Feedback</th>
+                        <th>Response</th>
+                        <th>Action</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for fb in feedbacks %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ fb.username }}</td>
+                        <td class="feedback-text">{{ fb.feedback }}</td>
+
+                        <td>{{ fb.response if fb.response else "No Reply Yet" }}</td>
+
+                        <td>
+                            <form method="POST" action="/reply_feedback">
+                                <input type="hidden" name="fid" value="{{ fb.fid }}">
+                                <textarea name="response"
+                                        class="reply-box"
+                                        placeholder="Write your reply..."
+                                        rows="2"
+                                        required>{{ fb.response if fb.response else "" }}</textarea>
+                                <button type="submit" class="reply-btn">
+                                    {% if fb.response %}Update{% else %}Reply{% endif %}
+                                </button>
+                            </form>
+                        </td>
+                        <td>{{ fb.fdate.strftime('%d-%m-%Y %H:%M') }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Liver Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/users/style.css') }}">
+</head>
+<body>
+
+<div class="background-slider">
+    <div class="slide slide1"></div>
+    <div class="slide slide2"></div>
+    <div class="slide slide3"></div>
+    <div class="overlay"></div>
+</div>
+
+<div class="page">
+    <header class="top">
+        <h1>Advanced Liver Fibrosis Prediction</h1>
+        <p>Welcome <span>{{ session['user'] }}</span></p>
+    </header>
+
+    <main class="center">
+        <p class="desc">
+           An intelligent system for early assessment of advanced liver fibrosis risk.
+        </p>
+
+        <div class="actions">
+            <a href="/prediction" class="predict-btn">Predict Now</a>
+            <a href="/history">View History</a>
+            <a href="/chng_pswrd">Change Password</a>
+            <a href="/feedback">Send Feedback</a>
+            <a href="/" class="logout">Logout</a>
+        </div>
+    </main>
+
+    <footer class="caution">
+        <strong>Note:</strong> This tool is for informational purposes only and does not replace professional medical advice or diagnosis.
+    </footer>
+</div>
+
+</body>
+</html>

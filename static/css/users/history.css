@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* ---------- GENERAL PAGE STYLE ---------- */
+body {
+    font-family: 'Inter', sans-serif;
+    /* Your established Navy Blue Medical Background */
+    background: linear-gradient(135deg, #f0f7ff 0%, #e2e8f0 100%);
+    background-attachment: fixed;
+    margin: 0;
+    padding: 40px;
+    color: #334155;
+    min-height: 100vh;
+}
+
+/* ---------- HEADING ---------- */
+h2 {
+    text-align: center;
+    color: #1e3a8a;
+    margin-bottom: 30px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+/* ---------- GLASS TABLE CONTAINER ---------- */
+.table-container {
+    width: 95%;
+    max-width: 1200px;
+    margin: auto;
+    
+    /* Transparent white background */
+    background: rgba(255, 255, 255, 0.45); 
+    
+    /* Frosted glass effect */
+    backdrop-filter: blur(12px) saturate(160%);
+    -webkit-backdrop-filter: blur(12px) saturate(160%);
+    
+    /* SOFT CORNERS */
+    border-radius: 30px; /* Increased for a softer, modern look */
+    overflow: hidden;    /* Crucial: clips the sharp table corners to match the container */
+    
+    /* Subtle highlight border */
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 20px 40px rgba(30, 58, 138, 0.08);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: transparent;
+}
+
+/* ---------- TABLE HEADER ---------- */
+th {
+    /* Translucent Navy Blue */
+    background-color: rgba(30, 58, 138, 0.9); 
+    color: #ffffff;
+    padding: 20px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    border: none;
+}
+
+/* ---------- TABLE CELLS ---------- */
+td {
+    padding: 18px 15px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    font-size: 14px;
+    color: #1e293b;
+    font-weight: 500;
+}
+
+/* Remove border from the very last row to keep the bottom corners clean */
+tr:last-child td {
+    border-bottom: none;
+}
+
+/* ---------- ROW HOVER EFFECT ---------- */
+tr:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    transition: background-color 0.2s ease;
+}
+
+/* ---------- STATUS INDICATORS ---------- */
+.result-positive { 
+    background: rgba(254, 226, 226, 0.7);
+    color: #991b1b; 
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-weight: 700; 
+}
+
+.result-negative { 
+    background: rgba(220, 252, 231, 0.7);
+    color: #166534; 
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-weight: 700; 
+}
+
+/* ---------- BUTTONS ---------- */
+.btn-container {
+    text-align: center;
+    margin-top: 40px;
+}
+
+a {
+    display: inline-block;
+    padding: 14px 28px;
+    background-color: #1e3a8a;
+    color: white;
+    text-decoration: none;
+    border-radius: 14px; /* Matches the soft theme */
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0 10px;
+    transition: background-color 0.2s ease;
+}
+
+a:hover {
+    background-color: #2563eb;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .table-container { border-radius: 20px; }
+    th, td { padding: 12px 8px; font-size: 11px; }
+}

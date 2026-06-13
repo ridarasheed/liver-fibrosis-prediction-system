@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predict | Liver Health System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/users/predict.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body class="static-bg">
+
+<nav class="navbar">
+    <h2><i class="fa-solid fa-house-medical"></i> Liver Health System</h2>
+    <div>
+        <a href="{{ url_for('home') }}">
+            <i class="fa-solid fa-house"></i> Home
+        </a>
+        <a href="{{ url_for('history') }}">
+            <i class="fa-solid fa-clock-rotate-left"></i> History
+        </a>
+        <a href="/" class="logout">Logout</a>
+    </div>
+</nav>
+
+<div class="container">
+    <header class="form-header">
+        <h1>Patient Assessment</h1>
+        <p class="subtitle">Enter clinical laboratory values for fibrosis risk analysis</p>
+    </header>
+    
+    
+
+    <form method="POST" action="/predict" class="prediction-form">
+        <div class="form-grid">
+            <div class="input-group">
+                <label>Age <span class="unit">(Years)</span></label>
+                <input type="number" name="Age" min="1" max="120" placeholder="e.g. 45" required>
+            </div>
+
+            <div class="input-group">
+                <label>Gender</label>
+                <select name="Gender" required>
+                    <option value="" disabled selected>Select Gender</option>
+                    <option value="1">Male</option>
+                    <option value="0">Female</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>Total Bilirubin <span class="unit">(mg/dL)</span></label>
+                <input type="number" step="0.01" name="Total_Bilirubin" placeholder="0.00" required>
+            </div>
+
+            <div class="input-group">
+                <label>Direct Bilirubin <span class="unit">(mg/dL)</span></label>
+                <input type="number" step="0.01" name="Direct_Bilirubin" placeholder="0.00" required>
+            </div>
+
+            <div class="input-group">
+                <label>Alkaline Phosphatase <span class="unit">(U/L)</span></label>
+                <input type="number" step="0.01" name="Alkaline_Phosphotase" placeholder="0.00" required>
+            </div>
+
+            <div class="input-group">
+                <label>ALT / SGPT <span class="unit">(U/L)</span></label>
+                <input type="number" step="0.01" name="Alamine_Aminotransferase" placeholder="0.00" required>
+            </div>
+
+            <div class="input-group">
+                <label>AST / SGOT <span class="unit">(U/L)</span></label>
+                <input type="number" step="0.01" name="Aspartate_Aminotransferase" placeholder="0.00" required>
+            </div>
+
+            <div class="input-group">
+                <label>Total Proteins <span class="unit">(g/dL)</span></label>
+                <input type="number" step="0.01" name="Total_Protiens" placeholder="0.00" required>
+            </div>
+
+            <div class="input-group">
+                <label>Albumin <span class="unit">(g/dL)</span></label>
+                <input type="number" step="0.01" name="Albumin" placeholder="0.00" required>
+            </div>
+
+            <div class="input-group">
+                <label>A/G Ratio</label>
+                <input type="number" step="0.01" name="Albumin_and_Globulin_Ratio" placeholder="0.00" required>
+            </div>
+        </div>
+
+        <button type="submit" class="predict-submit">
+            <i class="fa-solid fa-magnifying-glass-chart"></i> Generate Prediction Analysis
+        </button>
+    </form>
+</div>
+
+<footer class="caution">
+    <div class="caution-content">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        <p><strong>Clinical Note:</strong> This risk assessment is based on machine learning algorithms. Results must be interpreted by a medical professional..</p>
+    </div>
+</footer>
+
+</body>
+</html>

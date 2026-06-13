@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result | Liver Health System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/users/result.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Prediction Result</h1>
+        <p class="subtitle">Clinical Diagnostic Analysis</p>
+    </header>
+
+    <div class="result-box">
+        <p>Assessment Status</p>
+        <div class="result-value">{{ result }}</div>
+    </div>
+
+    <a href="/prediction" class="btn">
+        <i class="fa-solid fa-rotate-left"></i> Predict Again
+    </a>
+
+    <div class="secondary-links">
+        <a href="/home" class="link">
+            <i class="fa-solid fa-house"></i> Go to Home
+        </a>
+        
+        <a href="/" class="link logout-link">
+            Logout <i class="fa-solid fa-right-from-bracket"></i>
+        </a>
+    </div>
+</div>
+
+<footer class="caution">
+    <div class="caution-content">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        <p><strong>Clinical Note:</strong>This risk assessment is based on machine learning algorithms. Results must be interpreted by a medical professional.</p>
+    </div>
+</footer>
+
+</body>
+</html>

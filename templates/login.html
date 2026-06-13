@@ -1,0 +1,47 @@
+<body>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/users/login.css') }}">
+
+<div class="page">
+
+    <div class="left-panel">
+        <h1>Prediction of Advanced<br>Liver Fibrosis</h1>
+        <p>
+            A non-invasive machine learning–based system for early
+            prediction of liver fibrosis risk using routine blood tests.
+        </p>
+    </div>
+
+    <div class="container">
+
+        <h1>Login</h1>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+            <div class="flash-message {{ category }}">
+                {{ message }}
+            </div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+        
+        <form method="POST" action="/">
+
+            <input type="email" name="username" placeholder="Email" required>
+
+            <input type="password" name="password" placeholder="Password" required>
+
+            <button type="submit">Login</button>
+
+            <div class="link-footer">
+                <a href="/forgot">Forgot password?</a>
+                <a href="/register">Sign up</a>
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+    <title>Forgot Password</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin/chng_pswrd.css') }}">
+
+</head>
+
+<body>
+
+<main class="content">
+
+    <div class="content-box">
+
+    <h1>Forgot Password</h1>
+
+    <p class="desc">
+    Enter your username and date of birth to reset your password.
+    </p>
+
+    <div class="form-box">
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    {% for category, message in messages %}
+
+    <div class="flash-message {{ category }}">
+    {{ message }}
+    </div>
+
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <form method="POST">
+
+        <label>Username</label>
+        <input type="text" name="username" required>
+
+        <label>Date of Birth</label>
+        <input type="date" name="dob" required>
+
+        <label>New Password</label>
+        <input type="password" name="new_password" required>
+
+        <button type="submit">Reset Password</button>
+
+    </form>
+
+    </div>
+
+    <div class="nav-footer">
+        <a href="/" class="link">
+        <i class="fa-solid fa-arrow-left"></i> Back to Login
+        </a>
+    </div>
+
+    </div>
+
+</main>
+
+</body>
+</html>

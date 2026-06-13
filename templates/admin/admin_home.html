@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel | Liver Health System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin/adminhome.css') }}">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="nav-logo">
+            <h2>Admin Panel</h2>
+        </div>
+        <nav>
+            <a href="/admin_home" class="active">Dashboard</a>
+            <a href="/adm_users">Users</a>
+            <a href="/adm_feed">Feedback</a>
+            <a href="/chng_pswrd">Password</a>
+            <a href="/" class="logout-btn">Logout</a>
+        </nav>
+    </header>
+
+    <main class="content">
+        <div class="content-box">
+            {% block body %}
+            <h1>Welcome, Admin</h1>
+
+            <p class="welcome-text">
+                This is the administrative control center for the Liver Fibrosis Risk Analysis System. 
+                Monitor system performance, manage user access, and address clinical feedback below.
+            </p>
+
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-info">
+                        <h2>{{ total_users }}</h2>
+                        <p>Total Registered Users</p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-info">
+                        <h2>{{ total_feedback }}</h2>
+                        <p>Total Submissions</p>
+                    </div>
+                </div>
+
+                <div class="stat-card pending">
+                    <div class="stat-info">
+                        <h2>{{ pending_feedback }}</h2>
+                        <p>Pending Responses</p>
+                    </div>
+                </div>
+            </div>
+            {% endblock %}
+        </div>
+    </main>
+
+</body>
+</html>
